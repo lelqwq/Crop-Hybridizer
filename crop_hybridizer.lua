@@ -8,7 +8,7 @@ local inventory_controller = component.inventory_controller
 local target_crop_name -- 用户输入要杂交的作物
 local reference_growth, reference_gain = 0, 0 -- 生长、产量比较基准
 local middle_crop_growth, middle_crop_gain, middle_crop_resistance = 0, 0, 0 -- 中间作物的生长、产量、抗性
-local target_growth, target_gain, target_resistance = 0, 0, 0 -- 用户设置的生长、产量、抗性上限
+local target_growth, target_gain, target_resistance = 0, 0, 0 -- 生长、产量目标（收获允许 ±2），抗性上限
 local fail_counts = 0 -- 杂交失败次数
 local success_counts = 0 -- 杂交成功次数
 local SleepTime = 1 -- 扫描间隔（秒），启动时由用户输入
@@ -52,27 +52,33 @@ function has_seed_in_inventory()
 end
 
 -- 返回中间作物的处理决策：discard 淘汰，harvest 成熟后仅收获，replace 成熟后收获并替换亲本。
+-- 生长、产量均在各自目标 ±2（含边界）内时允许收获；抗性仍不得超过上限。
 function evaluate_middle_crop()
     -- 扫描结果缺少三围时无法比较，直接淘汰
     if middle_crop_growth == nil or middle_crop_gain == nil or middle_crop_resistance == nil then
         return "discard"
     end
 
-    -- 生长或产量低于基准亲本时淘汰；两项均等于基准时仍可收获，忽略抗性下降。
-    if middle_crop_growth < reference_growth or middle_crop_gain < reference_gain then
-        return "discard"
-
-    -- 任一属性超过用户设置的上限，直接淘汰
-    elseif middle_crop_growth > target_growth or middle_crop_gain > target_gain or middle_crop_resistance > target_resistance then
+    -- 抗性只检查上限，不应用生长、产量的收获容差。
+    if middle_crop_resistance > target_resistance then
         return "discard"
     end
 
-    -- 已确认生长、产量均不低于基准；任意一项提升就值得替换亲本。
-    if middle_crop_growth > reference_growth or middle_crop_gain > reference_gain then
+    -- bool值：是否在可收获范围
+    local in_target_range = math.abs(middle_crop_growth - target_growth) <= 2 and math.abs(middle_crop_gain - target_gain) <= 2
+    -- bool只：是否可用于替代亲本
+    local meets_parent_limits = middle_crop_growth >= reference_growth and middle_crop_gain >= reference_gain and middle_crop_growth <= target_growth and middle_crop_gain <= target_gain
+
+    -- 不在收获范围内，也不满足原有亲本筛选限制时才淘汰。
+    if not in_target_range and not meets_parent_limits then
+        return "discard"
+    end
+
+    if meets_parent_limits and (middle_crop_growth > reference_growth or middle_crop_gain > reference_gain) then
         return "replace"
     end
 
-    -- 生长和产量均与基准相同，等待成熟后收集种子，不重复替换亲本。
+    -- 容差范围内的种子或与基准相同的种子，等待成熟后直接入箱，不替换亲本。
     return "harvest"
 end
 
