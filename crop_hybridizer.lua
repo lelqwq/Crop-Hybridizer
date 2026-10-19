@@ -170,7 +170,7 @@ function clear_slots()
             local stack = inventory_controller.getStackInInternalSlot(slot)
             if stack then
                 robot.select(slot)
-                robot.drop(sides.left)
+                robot.drop()
             end
         end
     end
@@ -262,7 +262,7 @@ end
 -- 内部为无限循环，正常工作时不会返回主菜单。
 function breed_crop_by_stats()
     while true do
-        local crop = geolyzer.crop(sides.front)
+        local crop = geolyzer.analyze(sides.front)
         local name = get_crop_name(crop)
 
         if name == "IC2:blockCrop" then
