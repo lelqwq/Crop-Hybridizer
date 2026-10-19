@@ -51,24 +51,29 @@ function has_seed_in_inventory()
     return false, nil
 end
 
--- 是否淘汰中间作物
-function should_discard_middle_crop()
+-- 返回中间作物的处理决策：discard 淘汰，harvest 成熟后仅收获，replace 成熟后收获并替换亲本。
+function evaluate_middle_crop()
     -- 扫描结果缺少三围时无法比较，直接淘汰
     if middle_crop_growth == nil or middle_crop_gain == nil or middle_crop_resistance == nil then
-        return true
+        return "discard"
     end
 
-    -- 生长或产量低于基准亲本，或两者都没有提升，直接淘汰；忽略抗性下降
-    if middle_crop_growth < reference_growth or middle_crop_gain < reference_gain
-        or (middle_crop_growth == reference_growth and middle_crop_gain == reference_gain) then
-        return true
+    -- 生长或产量低于基准亲本时淘汰；两项均等于基准时仍可收获，忽略抗性下降。
+    if middle_crop_growth < reference_growth or middle_crop_gain < reference_gain then
+        return "discard"
 
     -- 任一属性超过用户设置的上限，直接淘汰
     elseif middle_crop_growth > target_growth or middle_crop_gain > target_gain or middle_crop_resistance > target_resistance then
-        return true
-    else
-        return false
+        return "discard"
     end
+
+    -- 已确认生长、产量均不低于基准；任意一项提升就值得替换亲本。
+    if middle_crop_growth > reference_growth or middle_crop_gain > reference_gain then
+        return "replace"
+    end
+
+    -- 生长和产量均与基准相同，等待成熟后收集种子，不重复替换亲本。
+    return "harvest"
 end
 
 -- 返回作物当前生长阶段
@@ -273,9 +278,10 @@ function breed_crop_by_stats()
         elseif string.lower(name) == target_crop_name then
             middle_crop_growth, middle_crop_gain, middle_crop_resistance = get_mid_crop_status(crop)
             local parent_side = weaker_parent_side()
+            local action = evaluate_middle_crop()
 
             -- 中间作物数值不达标
-            if should_discard_middle_crop() then
+            if action == "discard" then
                 break_front_crop()
                 clear_slots()
                 place_hybridization_rack()
@@ -290,14 +296,17 @@ function breed_crop_by_stats()
                 if not has_seed then
                     add_fail_counts()
                 else
-                    if parent_side == "right" then
-                        replace_right_parent_crop(seed_slot)
-                    else
-                        replace_left_parent_crop(seed_slot)
+                    -- 只有生长或产量提升时才消耗种子替换亲本；相同数值的种子直接保存。
+                    if action == "replace" then
+                        if parent_side == "right" then
+                            replace_right_parent_crop(seed_slot)
+                        else
+                            replace_left_parent_crop(seed_slot)
+                        end
                     end
                     print("成功", "Gr=", middle_crop_growth, "Ga=", middle_crop_gain, "Re=", middle_crop_resistance)
                     add_success_counts()
-                    -- 如果该槽位还有种子，就把多的种子放到箱子里
+                    -- 未用于替换亲本的种子，以及替换后剩余的种子，均存入上方容器。
                     drop_seed_up(seed_slot)
                 end
                 clear_slots()
