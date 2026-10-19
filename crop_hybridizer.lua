@@ -11,6 +11,7 @@ local middle_crop_growth, middle_crop_gain, middle_crop_resistance = 0, 0, 0 -- 
 local target_growth, target_gain, target_resistance = 0, 0, 0 -- 用户设置的生长、产量、抗性上限
 local fail_counts = 0 -- 杂交失败次数
 local success_counts = 0 -- 杂交成功次数
+local SleepTime = 1 -- 扫描间隔（秒），启动时由用户输入
 
 -- 从扫描结果 x 中返回作物名 crop:name，缺失时返回方块名 name；两者都缺失则返回 nil。
 function get_crop_name(x)
@@ -157,11 +158,13 @@ function replenish_crop_sticks_if_needed()
 end
 
 -- 清理槽位
--- 把2到14号槽位的物品放到上面的箱子里
+-- 把除 1、15、16 号功能槽以外的物品向左扔出，配合垃圾桶表示丢弃
 function clear_slots()
-    for slot = 2, 14 do
-        robot.select(slot)
-        robot.dropUp()
+    for slot = 2, robot.inventorySize() do
+        if slot ~= 15 and slot ~= 16 then
+            robot.select(slot)
+            robot.drop(sides.left)
+        end
     end
 end
 
@@ -256,6 +259,7 @@ function breed_crop_by_stats()
 
         if name == "IC2:blockCrop" then
             -- 空杂交架，等待作物出现
+            os.sleep(SleepTime)
 
         -- 目标作物
         elseif string.lower(name) == target_crop_name then
@@ -290,6 +294,8 @@ function breed_crop_by_stats()
                 end
                 clear_slots()
                 place_hybridization_rack()
+            else
+                os.sleep(SleepTime)
             end
 
         -- 其他作物或杂草
@@ -313,6 +319,7 @@ function harvest_target_crop_seeds()
         
         if name == "IC2:blockCrop" then
             -- 空杂交架，等待作物出现
+            os.sleep(SleepTime)
 
         -- 目标作物
         elseif string.lower(name) == target_crop_name then
@@ -329,6 +336,8 @@ function harvest_target_crop_seeds()
                 end
                 clear_slots()
                 place_hybridization_rack()
+            else
+                os.sleep(SleepTime)
             end
         else
             add_fail_counts()
@@ -342,7 +351,7 @@ end
 
 -- 模式 1 按指定品种筛选，模式 2 按三围培育。
 function main()
-    print("1号槽放作物架,15号槽放鹤嘴锄,16号槽除草剂\n")
+    print("1号槽放作物架,15号槽放鹤嘴锄,16号槽除草剂,其他位置不要放物品\n")
     print("选择杂交模式:\n")
     print("\t1 -> 无视gr、ga、re值,只选择杂交出特定作物\n")
     print("\t2 -> 正常按照gr、ga、re值杂交\n")
@@ -353,6 +362,8 @@ function main()
         print("输入特定作物")
         target_crop_name = string.lower(io.read("*l"))
 
+        print("输入等待时间(秒),太长可能会长杂草或收获别的作物,太短会增加耗电量,EV世界加速器建议2~4")
+        SleepTime = io.read("*n")
         print("失败时是否打印次数?(输入1则打印,输入2则不打印)")
         IfPrintFailTimes = io.read("*n")
         apply_weedex_and_place_rack()
@@ -361,6 +372,8 @@ function main()
         print("输入作物名称:")
         target_crop_name = string.lower(io.read("*l"))
 
+        print("输入等待时间(秒),太长可能会长杂草或收获别的作物,太短会增加耗电量,EV世界加速器建议2~4")
+        SleepTime = io.read("*n")
         print("失败时是否打印次数?(输入1则打印,输入2则不打印)")
         IfPrintFailTimes = io.read("*n")
 
