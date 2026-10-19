@@ -26,6 +26,19 @@ function get_mid_crop_status(x)
     return x["crop:growth"], x["crop:gain"], x["crop:resistance"]
 end
 
+-- 按 growth + gain 选出较弱的一侧亲本，并同步更新筛选基准；相等时选左侧。
+function weaker_parent_side()
+    if (Rgr + Rga) < (Lgr + Lga) then
+        reference_growth = Rgr
+        reference_gain = Rga
+        return "right"
+    else
+        reference_growth = Lgr
+        reference_gain = Lga
+        return "left"
+    end
+end
+
 -- 扫描机器人内部全部槽位，返回是否存在 IC2 种子袋，以及首次出现种子袋的槽位。
 function has_seed_in_inventory()
     for slot = 1, robot.inventorySize() do
@@ -241,9 +254,13 @@ function breed_crop_by_stats()
         local crop = geolyzer.crop(sides.front)
         local name = get_crop_name(crop)
 
+        if name == "IC2:blockCrop" then
+            -- 空杂交架，等待作物出现
+
         -- 目标作物
-        if string.lower(name) == target_crop_name then
+        elseif string.lower(name) == target_crop_name then
             middle_crop_growth, middle_crop_gain, middle_crop_resistance = get_mid_crop_status(crop)
+            local parent_side = weaker_parent_side()
 
             -- 中间作物数值不达标
             if should_discard_middle_crop() then
@@ -261,18 +278,6 @@ function breed_crop_by_stats()
                 if not has_seed then
                     add_fail_counts()
                 else
-                    -- 记录数值低的亲本，准备替换这个数值低的亲本
-                    local parent_side
-                    if (Lgr + Lga) < (Rgr + Rga) then
-                        reference_growth = Lgr
-                        reference_gain = Lga
-                        parent_side = "left"
-                    else
-                        reference_growth = Rgr
-                        reference_gain = Rga
-                        parent_side = "right"
-                    end
-                    
                     if parent_side == "right" then
                         replace_right_parent_crop(seed_slot)
                     else
@@ -305,8 +310,12 @@ function harvest_target_crop_seeds()
     while true do
         local crop = geolyzer.analyze(sides.front)
         local name = get_crop_name(crop)
+        
+        if name == "IC2:blockCrop" then
+            -- 空杂交架，等待作物出现
+
         -- 目标作物
-        if string.lower(name) == target_crop_name then
+        elseif string.lower(name) == target_crop_name then
             -- 作物生长100%
             if get_crop_current_size(crop) == get_crop_max_size(crop) then
                 break_front_crop()
