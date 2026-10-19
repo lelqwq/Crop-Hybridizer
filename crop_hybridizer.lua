@@ -394,7 +394,7 @@ function main()
         print("输入想要控制的Re(抗性)值(以内)")
         target_resistance = io.read("*n")
 
-        print("注意左右两边作物架的Gr、Ga、Re值不能差太大")
+        print("左右两边亲本的Gr、Ga、Re尽量接近：差距过大时培育进度慢，且Re可能被平均值拉低")
         print("输入左边作物的Gr值")
         Lgr = io.read("*n")
 
