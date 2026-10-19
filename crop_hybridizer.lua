@@ -53,6 +53,11 @@ end
 
 -- 是否淘汰中间作物
 function should_discard_middle_crop()
+    -- 扫描结果缺少三围时无法比较，直接淘汰
+    if middle_crop_growth == nil or middle_crop_gain == nil or middle_crop_resistance == nil then
+        return true
+    end
+
     -- 生长或产量低于基准亲本，或两者都没有提升，直接淘汰；忽略抗性下降
     if middle_crop_growth < reference_growth or middle_crop_gain < reference_gain
         or (middle_crop_growth == reference_growth and middle_crop_gain == reference_gain) then
@@ -162,8 +167,11 @@ end
 function clear_slots()
     for slot = 2, robot.inventorySize() do
         if slot ~= 15 and slot ~= 16 then
-            robot.select(slot)
-            robot.drop(sides.left)
+            local stack = inventory_controller.getStackInInternalSlot(slot)
+            if stack then
+                robot.select(slot)
+                robot.drop(sides.left)
+            end
         end
     end
 end
@@ -269,9 +277,9 @@ function breed_crop_by_stats()
             -- 中间作物数值不达标
             if should_discard_middle_crop() then
                 break_front_crop()
+                clear_slots()
                 place_hybridization_rack()
                 add_fail_counts()
-                clear_slots()
 
             -- 中间作物数值达标且生长进度100%
             elseif get_crop_current_size(crop) == get_crop_max_size(crop) then
