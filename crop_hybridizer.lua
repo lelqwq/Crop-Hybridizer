@@ -222,14 +222,14 @@ end
 -- 成功计数加 1，并无条件打印失败、成功和总次数；不自行判断本次操作是否成功。
 function add_success_counts()
     success_counts = success_counts + 1
-    print("失败", fail_counts, "成功", success_counts, "总共", fail_counts + success_counts)
+    print(string.format("失败=%d 成功=%d 总共=%d", fail_counts, success_counts, fail_counts + success_counts))
 end
 
 -- 失败计数加 1；仅当 IfPrintFailTimes == 1 时打印失败、成功和总次数。
 function add_fail_counts()
     fail_counts = fail_counts + 1
     if IfPrintFailTimes == 1 then
-        print("失败", fail_counts, "成功", success_counts, "总共", fail_counts + success_counts)
+        print(string.format("失败=%d 成功=%d 总共=%d", fail_counts, success_counts, fail_counts + success_counts))
     end
 end
 
@@ -310,7 +310,7 @@ function breed_crop_by_stats()
                             replace_left_parent_crop(seed_slot)
                         end
                     end
-                    print("成功", "Gr=", middle_crop_growth, "Ga=", middle_crop_gain, "Re=", middle_crop_resistance)
+                    print(string.format("成功 Gr=%d Ga=%d Re=%d", middle_crop_growth, middle_crop_gain, middle_crop_resistance))
                     add_success_counts()
                     -- 未用于替换亲本的种子，以及替换后剩余的种子，均存入上方容器。
                     drop_seed_up(seed_slot)
@@ -374,10 +374,11 @@ end
 
 -- 模式 1 按指定品种筛选，模式 2 按三围培育。
 function main()
-    print("1号槽放作物架,15号槽放鹤嘴锄,16号槽除草剂,其他位置不要放物品\n")
-    print("选择杂交模式:\n")
-    print("\t1 -> 无视gr、ga、re值,只选择杂交出特定作物\n")
-    print("\t2 -> 正常按照gr、ga、re值杂交\n")
+    print("1号槽：作物架，15号槽：鹤嘴锄")
+    print("16号槽：除草剂，其他位置不要放物品")
+    print("选择杂交模式:")
+    print("1 -> 按品种收获，忽略三围")
+    print("2 -> 按三围培育")
     ChangeMode = io.read("*n")
     io.read("*l") -- 消耗换行符
 
@@ -387,7 +388,7 @@ function main()
 
         print("输入等待时间(秒),可以是小数")
         SleepTime = io.read("*n")
-        print("失败时是否打印次数?(输入1则打印,输入2则不打印)")
+        print("失败时打印次数？1=打印，2=不打印")
         IfPrintFailTimes = io.read("*n")
         apply_weedex_and_place_rack()
         harvest_target_crop_seeds()
@@ -397,7 +398,7 @@ function main()
 
         print("输入等待时间(秒),可以是小数")
         SleepTime = io.read("*n")
-        print("失败时是否打印次数?(输入1则打印,输入2则不打印)")
+        print("失败时打印次数？1=打印，2=不打印")
         IfPrintFailTimes = io.read("*n")
 
         print("输入想要控制的Gr(生长速度)值(以内)")
@@ -409,7 +410,8 @@ function main()
         print("输入想要控制的Re(抗性)值(以内)")
         target_resistance = io.read("*n")
 
-        print("左右两边亲本的Gr、Ga、Re尽量接近：差距过大时培育进度慢，且Re可能被平均值拉低")
+        print("左右亲本的Gr、Ga、Re尽量接近")
+        print("差距过大时培育慢，Re可能被平均值拉低")
         print("输入左边作物的Gr值")
         Lgr = io.read("*n")
 

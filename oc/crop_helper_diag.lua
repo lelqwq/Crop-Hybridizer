@@ -8,9 +8,12 @@
 --
 -- 依赖服务器端 crop_helper 模组；没有模组时 info/catalog 会给出明确提示。
 -- 机器人或电脑的 geolyzer 必须朝向要扫描的作物。
+-- 终端内使用 OpenOS less 查看：方向键滚动、PgUp/PgDn 翻页、Q 退出。
 
 local component = require("component")
 local sides = require("sides")
+local print = print
+local interactive = false
 
 local PROTOCOL = 1
 local DEFAULT_LIMIT = 32
@@ -120,7 +123,11 @@ local function command_info(geolyzer)
 
     print("模组版本: " .. tostring(reply.mod_version))
     print("协议版本: " .. tostring(reply.protocol))
-    print("规则指纹: " .. tostring(reply.rules_fingerprint))
+    print("规则指纹:")
+    local fingerprint = tostring(reply.rules_fingerprint)
+    for start = 1, #fingerprint, 32 do
+        print("  " .. string.sub(fingerprint, start, start + 31))
+    end
     if reply.catalog_size ~= nil then
         print("品种数量: " .. tostring(reply.catalog_size))
     end
@@ -151,14 +158,11 @@ local function command_catalog(geolyzer, filter)
                 .. tostring(crop.display_name or ""))
             if not needle or needle == "" or string.find(haystack, needle, 1, true) then
                 matched = matched + 1
-                print(string.format(
-                    "%-38s tier=%s max=%s stats=%s attrs=%s  %s",
-                    tostring(crop.species_id),
-                    tostring(crop.tier),
-                    tostring(crop.max_size),
-                    join_numbers(crop.stats),
-                    table.concat(crop.attributes or {}, ","),
-                    tostring(crop.display_name)))
+                print(tostring(crop.species_id))
+                print("  名称: " .. tostring(crop.display_name))
+                print(string.format("  等级=%s 最大阶段=%s", tostring(crop.tier), tostring(crop.max_size)))
+                print("  固有属性: " .. join_numbers(crop.stats))
+                print("  标签: " .. table.concat(crop.attributes or {}, ","))
             end
         end
 
@@ -190,38 +194,58 @@ local function command_predict(geolyzer, parent_a, parent_b, limit, offset)
         return
     end
 
-    local reply, err = request(geolyzer, "predict", {
+    local query = {
         parent_a = parent_a,
         parent_b = parent_b,
         offset = tonumber(offset) or 0,
         limit = tonumber(limit) or DEFAULT_LIMIT,
-    })
-    if not reply then
-        print(err)
-        return
-    end
-    if not ensure_ok(reply) then
-        return
-    end
+    }
+    local first_page = true
+    local fingerprint
+    repeat
+        local reply, err = request(geolyzer, "predict", query)
+        if not reply then
+            print(err)
+            return
+        end
+        if not ensure_ok(reply) then
+            return
+        end
 
-    print("亲本: " .. tostring(reply.parent_a) .. " x " .. tostring(reply.parent_b))
-    print("总权重: " .. tostring(reply.total_weight) .. "，候选数: " .. tostring(reply.total))
-    if tonumber(reply.total) == 0 then
-        print("无正权重候选（总权重为 0）")
-        return
-    end
+        if first_page then
+            fingerprint = reply.rules_fingerprint
+            print("亲本 A: " .. tostring(reply.parent_a))
+            print("亲本 B: " .. tostring(reply.parent_b))
+            print("总权重: " .. tostring(reply.total_weight) .. "，候选数: " .. tostring(reply.total))
+            if tonumber(reply.total) == 0 then
+                print("无正权重候选（总权重为 0）")
+                return
+            end
+            first_page = false
+        elseif reply.rules_fingerprint ~= fingerprint then
+            print("规则指纹已变化，请重新运行查询")
+            return
+        end
 
-    for _, candidate in ipairs(reply.candidates or {}) do
-        local probability = tonumber(candidate.probability) or 0
-        print(string.format(
-            "%-38s weight=%s probability=%.4f%%",
-            tostring(candidate.species_id),
-            tostring(candidate.weight),
-            probability * 100))
-    end
-    if reply.next_offset then
-        print("还有更多候选，下一页 offset=" .. tostring(reply.next_offset))
-    end
+        for _, candidate in ipairs(reply.candidates or {}) do
+            local probability = tonumber(candidate.probability) or 0
+            print(tostring(candidate.species_id))
+            print(string.format("  权重=%s 概率=%.4f%%", tostring(candidate.weight), probability * 100))
+        end
+        if not reply.next_offset then
+            return
+        end
+        if not interactive then
+            print("还有更多候选，下一页 offset=" .. tostring(reply.next_offset))
+            return
+        end
+        local next_offset = tonumber(reply.next_offset)
+        if not next_offset or next_offset <= query.offset then
+            print("分页位置无效，已停止查询")
+            return
+        end
+        query.offset = next_offset
+    until false
 end
 
 local function command_scan(geolyzer)
@@ -269,4 +293,23 @@ local function main(args)
     end
 end
 
+-- less 自带回滚缓冲和按键处理；管道在用户退出时会停止上游输出及查询。
+local pager
+interactive = not not io.output().tty
+if interactive then
+    local reason
+    pager, reason = io.popen("less", "w")
+    if not pager then
+        print("无法启动 less: " .. tostring(reason))
+        return
+    end
+    print = function(value)
+        pager:write(tostring(value), "\n")
+    end
+    print("方向键滚动，PgUp/PgDn翻页，Q退出")
+end
+
 main({ ... })
+if pager then
+    pager:close()
+end

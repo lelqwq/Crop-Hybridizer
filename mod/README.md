@@ -80,11 +80,24 @@ local reply = scan and scan.crop_helper
 
 ```bash
 crop_helper_diag.lua info
-crop_helper_diag.lua catalog rubber
-crop_helper_diag.lua predict IC2:rubber IC2:rubber 32 0
+crop_helper_diag.lua catalog wheat
+crop_helper_diag.lua crop IC2:wheat
+crop_helper_diag.lua predict IC2:wheat IC2:wheat 5 0
 crop_helper_diag.lua scan
 ```
 
-`predict` 的可选参数为 `[limit] [offset]`，可用它验证服务端分页。
-`info` 能返回版本与指纹、`catalog` 能列出品种、`predict` 能给出权重，即表示阶段 1、2 的通信与目录接口打通。
-普通 `geolyzer.analyze(side)` 不应受本模组影响，可用 `crop_helper_diag.lua scan` 对比。
+先确认 `catalog wheat` 输出包含 `IC2:wheat`，再执行单品种和预测查询；若服务器修改了注册表，使用目录实际返回的完整 `species_id`，包括大小写。也可运行不带过滤文本的 `catalog` 查看完整目录。
+
+`catalog` 的过滤文本只匹配品种 ID 和显示名，不搜索产物。匹配 0 个表示没有匹配项；使用未注册的品种 ID 会返回 `unknown_crop`，应先从目录确认 ID。
+
+实机已确认 `info`、目录与小麦预测查询能够返回结果。预测值是忽略工位环境、两个亲本均已参与时的条件相对概率，不能作为现场每次杂交的成功率。普通扫描可用 `crop_helper_diag.lua scan` 对比。
+
+## 终端查看
+
+直接在终端运行时，诊断脚本通过 OpenOS 自带的 `less` 查看输出：↑/↓ 滚动一行，PageUp/PageDown 或空格翻页，Home/End 跳到首尾，Q 或 Ctrl+C 退出。到达末尾后仍可向上回看。
+
+`predict` 的可选参数为 `[limit] [offset]`：交互查看时，`limit` 是每次查询的候选数，`offset` 是起始位置，继续向下查看会自动获取后续候选，不必重新输入命令。每个候选先显示品种 ID，再显示权重和概率；目录字段分行显示，规则指纹每行显示 32 个字符。
+
+重定向到文件或管道时不启动交互查看器，保留原来的单页预测输出和下一页 `offset` 提示。例如 `crop_helper_diag.lua predict IC2:wheat IC2:wheat 5 0 > prediction.txt`。
+
+终端显示功能仅需更新 `oc/crop_helper_diag.lua`，使用 OpenOS 自带的 `less`；已有服务端模组不需要重新构建。新增交互查看及退出行为已通过离线模拟测试，尚未实机复验。
