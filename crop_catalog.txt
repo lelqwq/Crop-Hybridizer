@@ -1,0 +1,801 @@
+GoodGenerator:saltroot
+  名称: Salty Root
+  等级=4 最大阶段=3
+  固有属性: 0,0,0,0,0
+  标签: Salt,Gray,Root,Hydrophobic
+Gtplusplus:Hemp
+  名称: Hemp
+  等级=2 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Green,Soil,Orange
+IC2:aurelia
+  名称: ic2.crop.aurelia
+  等级=8 最大阶段=5
+  固有属性: 2,0,0,2,0
+  标签: Gold,Leaves,Metal
+IC2:blackthorn
+  名称: ic2.crop.blackthorn
+  等级=2 最大阶段=4
+  固有属性: 1,1,0,5,1
+  标签: Black,Flower,Rose
+IC2:brownMushroom
+  名称: ic2.crop.brownMushroom
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,0,4
+  标签: Brown,Food,Mushroom
+IC2:carrots
+  名称: ic2.crop.carrots
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,0,2
+  标签: Orange,Food,Carrots
+IC2:cocoa
+  名称: ic2.crop.cocoa
+  等级=3 最大阶段=4
+  固有属性: 1,3,0,4,0
+  标签: Brown,Food,Stem
+IC2:coffee
+  名称: ic2.crop.coffee
+  等级=7 最大阶段=5
+  固有属性: 1,4,1,2,0
+  标签: Leaves,Ingredient,Beans
+IC2:cyazint
+  名称: ic2.crop.cyazint
+  等级=2 最大阶段=4
+  固有属性: 1,1,0,5,1
+  标签: Blue,Flower
+IC2:cyprium
+  名称: ic2.crop.cyprium
+  等级=6 最大阶段=4
+  固有属性: 2,0,0,1,0
+  标签: Orange,Leaves,Metal
+IC2:dandelion
+  名称: ic2.crop.dandelion
+  等级=2 最大阶段=4
+  固有属性: 1,1,0,5,1
+  标签: Yellow,Flower
+IC2:eatingplant
+  名称: ic2.crop.eatingplant
+  等级=6 最大阶段=6
+  固有属性: 1,1,3,1,4
+  标签: Bad,Food
+IC2:ferru
+  名称: ic2.crop.ferru
+  等级=6 最大阶段=4
+  固有属性: 2,0,0,1,0
+  标签: Gray,Leaves,Metal
+IC2:hops
+  名称: ic2.crop.hops
+  等级=5 最大阶段=7
+  固有属性: 2,2,0,1,1
+  标签: Green,Ingredient,Wheat
+IC2:melon
+  名称: ic2.crop.melon
+  等级=2 最大阶段=4
+  固有属性: 0,4,0,2,0
+  标签: Green,Food,Stem
+IC2:netherWart
+  名称: ic2.crop.netherWart
+  等级=5 最大阶段=3
+  固有属性: 4,2,0,2,1
+  标签: Red,Nether,Ingredient,Soulsand
+IC2:plumbiscus
+  名称: ic2.crop.plumbiscus
+  等级=6 最大阶段=4
+  固有属性: 2,0,0,1,0
+  标签: Dense,Leaves,Metal
+IC2:potato
+  名称: ic2.crop.potato
+  等级=2 最大阶段=4
+  固有属性: 0,4,0,0,2
+  标签: Yellow,Food,Potato
+IC2:pumpkin
+  名称: ic2.crop.pumpkin
+  等级=1 最大阶段=4
+  固有属性: 0,1,0,3,1
+  标签: Orange,Decoration,Stem
+IC2:redMushroom
+  名称: ic2.crop.redMushroom
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,0,4
+  标签: Red,Food,Mushroom
+IC2:redwheat
+  名称: ic2.crop.redwheat
+  等级=6 最大阶段=7
+  固有属性: 3,0,0,2,0
+  标签: Red,Redstone,Wheat
+IC2:reed
+  名称: ic2.crop.reed
+  等级=2 最大阶段=3
+  固有属性: 0,0,1,0,2
+  标签: Reed
+IC2:rose
+  名称: ic2.crop.rose
+  等级=2 最大阶段=4
+  固有属性: 1,1,0,5,1
+  标签: Red,Flower,Rose
+IC2:shining
+  名称: ic2.crop.shining
+  等级=8 最大阶段=5
+  固有属性: 2,0,0,2,0
+  标签: Silver,Leaves,Metal
+IC2:stagnium
+  名称: ic2.crop.stagnium
+  等级=6 最大阶段=4
+  固有属性: 2,0,0,1,0
+  标签: Shiny,Leaves,Metal
+IC2:stickreed
+  名称: ic2.crop.stickreed
+  等级=4 最大阶段=4
+  固有属性: 2,0,1,0,1
+  标签: Reed,Resin
+IC2:terraWart
+  名称: ic2.crop.terraWart
+  等级=5 最大阶段=3
+  固有属性: 2,4,0,3,0
+  标签: Blue,Aether,Consumable,Snow
+IC2:tulip
+  名称: ic2.crop.tulip
+  等级=2 最大阶段=4
+  固有属性: 1,1,0,5,1
+  标签: Purple,Flower,Tulip
+IC2:venomilia
+  名称: ic2.crop.venomilia
+  等级=3 最大阶段=6
+  固有属性: 3,1,3,3,3
+  标签: Purple,Flower,Tulip,Poison
+IC2:weed
+  名称: ic2.crop.weed
+  等级=0 最大阶段=5
+  固有属性: 0,0,1,0,5
+  标签: Weed,Bad
+IC2:wheat
+  名称: ic2.crop.wheat
+  等级=1 最大阶段=7
+  固有属性: 0,4,0,0,2
+  标签: Yellow,Food,Wheat
+berriespp:Acacia Bonsai
+  名称: Acacia Bonsai
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,1,0
+  标签: Tree,Bonsai,Leafy
+berriespp:Aluminium Oreberry
+  名称: Aluminium Oreberry
+  等级=5 最大阶段=4
+  固有属性: 3,0,4,1,0
+  标签: OreBerry,Aluminium,Metal,Aluminum
+berriespp:Ardite Berry
+  名称: Ardite Berry
+  等级=7 最大阶段=4
+  固有属性: 3,0,4,1,0
+  标签: OreBerry,Ardite,Metal,Orange
+berriespp:Artichoke
+  名称: Artichoke
+  等级=4 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Flower,Water,Blue,Ingredient
+berriespp:Bamboo
+  名称: Bamboo
+  等级=2 最大阶段=3
+  固有属性: 0,0,3,0,3
+  标签: Green,Pointed,Edgy
+berriespp:Barley
+  名称: Barley
+  等级=2 最大阶段=4
+  固有属性: 0,4,0,0,2
+  标签: Green,Food,Wheat
+berriespp:Belladonna
+  名称: Belladonna
+  等级=4 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Purple,Flower,Toxic,Ingredient
+berriespp:Berry
+  名称: Berry
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,4,0
+  标签: Berry,Food,Red,Ingredient
+berriespp:Birch Bonsai
+  名称: Birch Bonsai
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,1,0
+  标签: Tree,Bonsai,Leafy
+berriespp:Black Stonelilly
+  名称: Black Stonelilly
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Black,Stone,Dark
+berriespp:Blackberry
+  名称: Blackberry
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,4,0
+  标签: Berry,Food,Black
+berriespp:Blightberry
+  名称: Blightberry
+  等级=4 最大阶段=3
+  固有属性: 1,3,4,4,0
+  标签: Berry,Toxic,Bad,Green,Nether,Addictive
+berriespp:Blue Glowshroom
+  名称: Blue Glowshroom
+  等级=3 最大阶段=2
+  固有属性: 1,3,0,4,0
+  标签: Food,Mushroom,Ingredient,Nether
+berriespp:Blueberry
+  名称: Blueberry
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,4,0
+  标签: Berry,Food,Blue
+berriespp:Cactus
+  名称: Cactus
+  等级=3 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Green,Cactus
+berriespp:Cinderpearl
+  名称: Cinderpearl
+  等级=5 最大阶段=3
+  固有属性: 2,0,0,2,0
+  标签: Magic,Blaze,Nether
+berriespp:Cobalt Berry
+  名称: Cobalt Berry
+  等级=7 最大阶段=4
+  固有属性: 3,0,4,1,0
+  标签: OreBerry,Cobalt,Metal,Blue
+berriespp:Copper Oreberry
+  名称: Copper Oreberry
+  等级=5 最大阶段=4
+  固有属性: 3,0,4,1,0
+  标签: OreBerry,Copper,Metal,Shiny
+berriespp:Cotton
+  名称: Cotton
+  等级=3 最大阶段=5
+  固有属性: 4,4,0,0,2
+  标签: White,Cotton
+berriespp:Dark Oak Bonsai
+  名称: Dark Oak Bonsai
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,1,0
+  标签: Tree,Bonsai,Leafy,Dark
+berriespp:Duskberry
+  名称: Duskberry
+  等级=4 最大阶段=3
+  固有属性: 1,3,4,4,0
+  标签: Berry,Toxic,Bad,Gray,Nether,Addictive
+berriespp:Ember Moss
+  名称: Ember Moss
+  等级=7 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Fire,Ingredient,Bad,Climbable
+berriespp:Essence Berry
+  名称: Essence Berry
+  等级=5 最大阶段=4
+  固有属性: 3,0,4,1,0
+  标签: OreBerry,Essence,Undead
+berriespp:Eyebulb
+  名称: Eyebulb
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Nether,Evil,Bad
+berriespp:Flowering Vines
+  名称: Flowering Vines
+  等级=3 最大阶段=4
+  固有属性: 0,0,0,4,0
+  标签: Green,Tendrilly,Flower
+berriespp:Garlic
+  名称: Garlic
+  等级=3 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Food,Ingredient,Healing
+berriespp:Garnydinia
+  名称: Garnydinia
+  等级=7 最大阶段=3
+  固有属性: 4,0,2,4,0
+  标签: Shiny,Crystal,Red,Yellow,Metal
+berriespp:Glint Weed
+  名称: Glint Weed
+  等级=4 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Orange,Flower,Magic
+berriespp:Glowflower
+  名称: Glowflower
+  等级=3 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Nether,Light,Shiny
+berriespp:Glowing Earth Coral
+  名称: Glowing Earth Coral
+  等级=5 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Water,Light,Shiny
+berriespp:Glowshroom
+  名称: Glowshroom
+  等级=3 最大阶段=2
+  固有属性: 1,3,0,4,0
+  标签: Food,Mushroom,Ingredient,Nether
+berriespp:Gold Oreberry
+  名称: Gold Oreberry
+  等级=5 最大阶段=4
+  固有属性: 3,0,4,1,0
+  标签: OreBerry,Gold,Metal
+berriespp:Goldfish Plant
+  名称: Goldfish Plant
+  等级=4 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Nether,Fish,Food,Bad,Water
+berriespp:Grass
+  名称: Grass
+  等级=0 最大阶段=4
+  固有属性: 0,0,0,3,4
+  标签: Green,Bad
+berriespp:Gray Stonelilly
+  名称: Gray Stonelilly
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Gray,Stone,Metal
+berriespp:Green Glowshroom
+  名称: Green Glowshroom
+  等级=3 最大阶段=2
+  固有属性: 1,3,0,4,0
+  标签: Food,Mushroom,Ingredient,Nether
+berriespp:Huckleberry
+  名称: Huckleberry
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,4,0
+  标签: Berry,Food,Purple,Leaves
+berriespp:Iron Oreberry
+  名称: Iron Oreberry
+  等级=5 最大阶段=4
+  固有属性: 3,0,4,1,0
+  标签: OreBerry,Gray,Metal
+berriespp:Ivy
+  名称: Ivy
+  等级=2 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Green,Tendrilly,Flower,Bad,Poison
+berriespp:Jungle Bonsai
+  名称: Jungle Bonsai
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,1,0
+  标签: Tree,Bonsai,Leafy
+berriespp:Knightly Oreberry
+  名称: Knightly Oreberry
+  等级=8 最大阶段=4
+  固有属性: 3,0,4,1,0
+  标签: OreBerry,Knightly,Metal
+berriespp:Magic Metal Berry
+  名称: Magic Metal Berry
+  等级=7 最大阶段=4
+  固有属性: 3,0,4,1,0
+  标签: OreBerry,Magic,Metal,Thaumium,Void
+berriespp:Magical Nightshade
+  名称: Magical Nightshade
+  等级=13 最大阶段=4
+  固有属性: 0,0,0,12,0
+  标签: Berry,Primordial,Magic,Unique
+berriespp:Maloberry
+  名称: Maloberry
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,4,0
+  标签: Berry,Food,Yellow
+berriespp:Mana Bean
+  名称: Mana Bean
+  等级=5 最大阶段=3
+  固有属性: 0,4,0,4,0
+  标签: Berry,Bean,Magic,Colorful
+berriespp:Mandragora
+  名称: Mandragora
+  等级=4 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Flower,Magic,Bad,Toxic,Ingredient
+berriespp:Moss
+  名称: Moss
+  等级=4 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Green,Climbable
+berriespp:Nether Stonelilly
+  名称: Nether Stonelilly
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Nether,Stone,Evil
+berriespp:Oak Bonsai
+  名称: Oak Bonsai
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,1,0
+  标签: Tree,Bonsai,Leafy,Food
+berriespp:Papyrus
+  名称: Papyrus
+  等级=5 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: White,Paper
+berriespp:Primordial Berry
+  名称: Primordial Berry
+  等级=16 最大阶段=4
+  固有属性: 0,0,0,12,0
+  标签: Berry,Primordial,Magic,Unique
+berriespp:Purple Glowshroom
+  名称: Purple Glowshroom
+  等级=3 最大阶段=2
+  固有属性: 1,3,0,4,0
+  标签: Food,Mushroom,Ingredient,Nether
+berriespp:Raspberry
+  名称: Raspberry
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,4,0
+  标签: Berry,Food,Red
+berriespp:Red Stonelilly
+  名称: Red Stonelilly
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Red,Stone,Fire
+berriespp:Saguaro Cactus
+  名称: Saguaro Cactus
+  等级=4 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Green,Food,Cactus
+berriespp:Shimmerleaf
+  名称: Shimmerleaf
+  等级=5 最大阶段=3
+  固有属性: 2,0,0,2,0
+  标签: Magic,Silver,Toxic
+berriespp:Skyberry
+  名称: Skyberry
+  等级=4 最大阶段=3
+  固有属性: 1,3,4,4,0
+  标签: Berry,Toxic,Bad,Blue,Nether,Addictive
+berriespp:Snowbell
+  名称: Snowbell
+  等级=4 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: White,Flower,Ice,Toxic,Ingredient
+berriespp:Space Plant
+  名称: Space Plant
+  等级=13 最大阶段=4
+  固有属性: 8,0,0,4,0
+  标签: Alien,Space,Radiation,Transform
+berriespp:Spanish Moss
+  名称: Spanish Moss
+  等级=7 最大阶段=4
+  固有属性: 0,0,0,4,0
+  标签: Green,Climbable,Magic
+berriespp:Spruce Bonsai
+  名称: Spruce Bonsai
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,1,0
+  标签: Tree,Bonsai,Leafy
+berriespp:Stingberry
+  名称: Stingberry
+  等级=4 最大阶段=3
+  固有属性: 1,3,4,4,0
+  标签: Berry,Toxic,Bad,Green,Nether,Addictive
+berriespp:Strawberry
+  名称: Strawberry
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,4,0
+  标签: Berry,Food,Red
+berriespp:Sugar Beet
+  名称: Sugar Beet
+  等级=4 最大阶段=3
+  固有属性: 0,4,0,0,2
+  标签: Food,White,Ingredient
+berriespp:Thornvines
+  名称: Thornvines
+  等级=3 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Nether,Climbable,Bad
+berriespp:Tin Oreberry
+  名称: Tin Oreberry
+  等级=4 最大阶段=4
+  固有属性: 3,0,4,1,0
+  标签: OreBerry,Tin,Metal,Shiny
+berriespp:Torchberry
+  名称: Torchberry
+  等级=2 最大阶段=3
+  固有属性: 2,0,0,2,1
+  标签: Berry,Glow,Shimmer
+berriespp:Turnip
+  名称: Turnip
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,0,2
+  标签: Food,Purple,Carrots
+berriespp:Vines
+  名称: Vines
+  等级=2 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Green,Tendrilly
+berriespp:Waterlilly
+  名称: Waterlilly
+  等级=2 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Blue,Water,Green
+berriespp:White Stonelilly
+  名称: White Stonelilly
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: White,Stone,Shiny
+berriespp:Wild Carrots
+  名称: Wild Carrots
+  等级=2 最大阶段=3
+  固有属性: 0,4,0,0,2
+  标签: Food,White,Carrots
+berriespp:Wolf's Bane
+  名称: Wolf's Bane
+  等级=4 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Flower,Toxic,Purple,Ingredient
+berriespp:Yellow Stonelilly
+  名称: Yellow Stonelilly
+  等级=1 最大阶段=3
+  固有属性: 0,0,0,4,0
+  标签: Yellow,Stone,Alien
+gregtech:Argentia
+  名称: Argentia
+  等级=7 最大阶段=4
+  固有属性: 2,0,1,0,0
+  标签: Shiny,Metal,Silver,Reed
+gregtech:Bauxia
+  名称: Bauxia
+  等级=6 最大阶段=3
+  固有属性: 5,0,2,3,3
+  标签: Metal,Aluminium,Reed,Aluminium
+gregtech:Blazereed
+  名称: Blazereed
+  等级=6 最大阶段=4
+  固有属性: 0,4,1,0,0
+  标签: Fire,Blaze,Reed,Sulfur
+gregtech:Bobsyeruncleranks
+  名称: Bobsyeruncleranks
+  等级=11 最大阶段=4
+  固有属性: 4,0,8,2,9
+  标签: Shiny,Tendrilly,Emerald,Berylium,Crystal
+gregtech:Brown Mushrooms
+  名称: Brown Mushrooms
+  等级=1 最大阶段=3
+  固有属性: 0,2,0,0,2
+  标签: Food,Mushroom,Ingredient
+gregtech:Chilly
+  名称: Chilly
+  等级=4 最大阶段=4
+  固有属性: 1,1,0,2,0
+  标签: Food,Red,Spicy
+gregtech:Coppon
+  名称: Coppon
+  等级=6 最大阶段=3
+  固有属性: 2,0,1,1,1
+  标签: Shiny,Metal,Cotton,Copper,Bush
+gregtech:Corium
+  名称: Corium
+  等级=6 最大阶段=4
+  固有属性: 0,2,3,1,0
+  标签: Cow,Silk,Tendrilly
+gregtech:Corpseplant
+  名称: Corpseplant
+  等级=5 最大阶段=4
+  固有属性: 0,2,1,0,3
+  标签: Toxic,Undead,Tendrilly,Food,Rotten
+gregtech:Creeperweed
+  名称: Creeperweed
+  等级=7 最大阶段=4
+  固有属性: 3,0,5,1,3
+  标签: Creeper,Tendrilly,Explosive,Fire,Sulfur,Saltpeter,Coal
+gregtech:Cucumber
+  名称: Cucumber
+  等级=4 最大阶段=4
+  固有属性: 1,1,0,2,0
+  标签: Food,Green
+gregtech:Diareed
+  名称: Diareed
+  等级=12 最大阶段=4
+  固有属性: 5,0,10,2,10
+  标签: Fire,Shiny,Reed,Coal,Diamond,Crystal
+gregtech:Eggplant
+  名称: Eggplant
+  等级=6 最大阶段=3
+  固有属性: 0,4,1,0,0
+  标签: Chicken,Egg,Food,Feather,Flower,Addictive
+gregtech:Enderbloom
+  名称: Enderbloom
+  等级=10 最大阶段=4
+  固有属性: 5,0,2,1,6
+  标签: Ender,Flower,Shiny
+gregtech:Evil Ore
+  名称: Evil Ore
+  等级=8 最大阶段=4
+  固有属性: 4,0,2,1,3
+  标签: Crystal,Fire,Nether
+gregtech:Fertilia
+  名称: Fertilia
+  等级=3 最大阶段=4
+  固有属性: 2,3,5,4,8
+  标签: Growth,Healing,Flower
+gregtech:Flax
+  名称: Flax
+  等级=2 最大阶段=4
+  固有属性: 1,1,2,0,1
+  标签: Silk,Tendrilly,Addictive
+gregtech:Galvania
+  名称: Galvania
+  等级=6 最大阶段=3
+  固有属性: 3,0,2,2,3
+  标签: Metal,Alloy,Bush
+gregtech:Glowheat
+  名称: Glowheat
+  等级=10 最大阶段=7
+  固有属性: 3,3,3,5,4
+  标签: Light,Shiny,Crystal
+gregtech:God of Thunder
+  名称: God of Thunder
+  等级=9 最大阶段=4
+  固有属性: 3,0,5,1,2
+  标签: Radioactive,Metal,Coal,Thorium
+gregtech:Grape
+  名称: Grape
+  等级=4 最大阶段=4
+  固有属性: 1,1,0,2,0
+  标签: Food,Purple
+gregtech:Indigo
+  名称: Indigo
+  等级=2 最大阶段=4
+  固有属性: 1,1,0,4,0
+  标签: Flower,Blue,Ingredient
+gregtech:Lazulia
+  名称: Lazulia
+  等级=7 最大阶段=4
+  固有属性: 4,2,5,7,4
+  标签: Shiny,Bad,Crystal,Lapis
+gregtech:Lemon
+  名称: Lemon
+  等级=4 最大阶段=4
+  固有属性: 1,1,0,2,0
+  标签: Food,Yellow,Sour
+gregtech:Liveroots
+  名称: Liveroots
+  等级=8 最大阶段=4
+  固有属性: 2,0,5,2,6
+  标签: Wood,Tendrilly
+gregtech:Meatrose
+  名称: Meatrose
+  等级=7 最大阶段=4
+  固有属性: 0,4,1,3,0
+  标签: Food,Flower,Cow,Fish,Chicken,Pig
+gregtech:Micadia
+  名称: Micadia
+  等级=9 最大阶段=3
+  固有属性: 2,0,3,0,0
+  标签: Metal,Pine,Mica,Bush
+gregtech:Milkwart
+  名称: Milkwart
+  等级=6 最大阶段=3
+  固有属性: 0,3,0,1,0
+  标签: Food,Milk,Cow
+gregtech:Nickelback
+  名称: Nickelback
+  等级=5 最大阶段=3
+  固有属性: 3,0,1,2,2
+  标签: Metal,Fire,Alloy
+gregtech:Oilberries
+  名称: Oilberries
+  等级=9 最大阶段=4
+  固有属性: 6,1,2,1,12
+  标签: Fire,Dark,Reed,Rotten,Coal,Oil
+gregtech:Olivia
+  名称: Olivia
+  等级=2 最大阶段=4
+  固有属性: 1,0,1,4,0
+  标签: Crystal,Shiny,Processing,Olivine
+gregtech:Onion
+  名称: Onion
+  等级=4 最大阶段=4
+  固有属性: 1,1,0,2,0
+  标签: Food,Brown
+gregtech:Platina
+  名称: Platina
+  等级=11 最大阶段=4
+  固有属性: 3,0,0,3,0
+  标签: Metal,Shiny,Reed,Platinum
+gregtech:Plumbilia
+  名称: Plumbilia
+  等级=6 最大阶段=4
+  固有属性: 2,0,3,1,1
+  标签: Heavy,Metal,Lead,Reed
+gregtech:Pyrolusium
+  名称: Pyrolusium
+  等级=12 最大阶段=3
+  固有属性: 1,0,1,1,0
+  标签: Metal,Clean,Bush,Manganese
+gregtech:Quantaria
+  名称: Quantaria
+  等级=12 最大阶段=4
+  固有属性: 4,0,0,1,0
+  标签: Metal,Iridium,Reed
+gregtech:Rape
+  名称: Rape
+  等级=4 最大阶段=4
+  固有属性: 1,1,0,2,0
+  标签: Food,Yellow,Oil
+gregtech:Reactoria
+  名称: Reactoria
+  等级=12 最大阶段=4
+  固有属性: 4,0,1,2,1
+  标签: Radioactive,Metal,Danger,Uranium
+gregtech:Red Mushrooms
+  名称: Red Mushrooms
+  等级=1 最大阶段=3
+  固有属性: 0,1,3,0,2
+  标签: Toxic,Mushroom,Ingredient
+gregtech:Sapphirum
+  名称: Sapphirum
+  等级=4 最大阶段=4
+  固有属性: 1,0,1,5,0
+  标签: Crystal,Shiny,Metal,Sapphire
+gregtech:Scheelinium
+  名称: Scheelinium
+  等级=12 最大阶段=3
+  固有属性: 3,0,1,1,0
+  标签: Metal,Hard,Bush,Tungsten
+gregtech:Slimeplant
+  名称: Slimeplant
+  等级=6 最大阶段=4
+  固有属性: 3,0,0,0,2
+  标签: Slime,Bouncy,Sticky,Bush
+gregtech:Spidernip
+  名称: Spidernip
+  等级=4 最大阶段=4
+  固有属性: 2,1,4,1,3
+  标签: Toxic,Silk,Spider,Flower,Ingredient,Addictive
+gregtech:Stargatium
+  名称: Stargatium
+  等级=12 最大阶段=4
+  固有属性: 4,0,0,2,0
+  标签: Metal,Heavy,Alien,Naquadah
+gregtech:Starwart
+  名称: Starwart
+  等级=12 最大阶段=4
+  固有属性: 2,0,0,1,0
+  标签: Wither,Nether,Undead,Netherstar
+gregtech:Steeleafranks
+  名称: Steeleafranks
+  等级=10 最大阶段=4
+  固有属性: 3,0,7,2,8
+  标签: Metal,Tendrilly,Iron
+gregtech:Tea
+  名称: Tea
+  等级=4 最大阶段=4
+  固有属性: 1,1,0,2,0
+  标签: Food,Green,Ingredient
+gregtech:Tearstalks
+  名称: Tearstalks
+  等级=8 最大阶段=4
+  固有属性: 1,2,0,0,0
+  标签: Healing,Nether,Ingredient,Reed,Ghast
+gregtech:Tine
+  名称: Tine
+  等级=5 最大阶段=3
+  固有属性: 2,0,3,0,0
+  标签: Shiny,Metal,Pine,Tin,Bush
+gregtech:Titania
+  名称: Titania
+  等级=9 最大阶段=3
+  固有属性: 5,0,3,3,1
+  标签: Metal,Heavy,Reed,Titanium
+gregtech:Tomato
+  名称: Tomato
+  等级=4 最大阶段=4
+  固有属性: 1,1,0,2,0
+  标签: Food,Red
+gregtech:Transformium
+  名称: Transformium
+  等级=12 最大阶段=4
+  固有属性: 6,2,1,6,1
+  标签: Transform,Coal,Reed
+gregtech:Trollplant
+  名称: Trollplant
+  等级=6 最大阶段=5
+  固有属性: 0,0,5,2,8
+  标签: Troll,Bad,Scrap
+gregtech:Withereed
+  名称: Withereed
+  等级=8 最大阶段=4
+  固有属性: 2,0,4,1,3
+  标签: Fire,Undead,Reed,Coal,Rotten,Wither
+gregtech:Zomplant
+  名称: Zomplant
+  等级=3 最大阶段=4
+  固有属性: 1,3,4,2,6
+  标签: Zombie,Rotten,Undead
+目录共 160 个品种，匹配 160 个
