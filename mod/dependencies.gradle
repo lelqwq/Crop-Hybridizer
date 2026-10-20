@@ -3,6 +3,7 @@ dependencies {
     compileOnlyApi("net.industrial-craft:industrialcraft-2:2.2.828-experimental:api") { transitive = false }
     compileOnlyApi("com.github.GTNewHorizons:OpenComputers:1.11.20-GTNH:dev") { transitive = false }
 
-    // 纯逻辑单测（规则、参数解析、指纹），不加载 Minecraft/IC2 类。
+    // 规则、参数、目录及只读快照测试，不启动游戏世界。
     testImplementation("junit:junit:4.13.2")
+    testImplementation("net.industrial-craft:industrialcraft-2:2.2.828-experimental:api") { transitive = false }
 }

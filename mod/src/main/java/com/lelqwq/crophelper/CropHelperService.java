@@ -15,7 +15,10 @@ import com.lelqwq.crophelper.catalog.Catalog;
 import com.lelqwq.crophelper.catalog.Ic2CatalogReader;
 import com.lelqwq.crophelper.catalog.Species;
 import com.lelqwq.crophelper.rules.CrossingRules;
+import com.lelqwq.crophelper.site.SiteInspector;
 import com.lelqwq.crophelper.util.RequestArgs;
+
+import li.cil.oc.api.event.GeolyzerEvent;
 
 /**
  * crop_helper 协议实现。所有操作都是只读查询，不改变世界或作物状态。
@@ -49,6 +52,10 @@ public final class CropHelperService {
     private CropHelperService() {}
 
     public static Map<String, Object> handle(String operation, Map<?, ?> args) {
+        return handle(operation, args, null);
+    }
+
+    public static Map<String, Object> handle(String operation, Map<?, ?> args, GeolyzerEvent.Analyze event) {
         Map<String, Object> response = new LinkedHashMap<String, Object>();
         response.put("ok", Boolean.TRUE);
         response.put("protocol", PROTOCOL);
@@ -70,6 +77,10 @@ public final class CropHelperService {
             Catalog catalog = Ic2CatalogReader.get();
             response.put("rules_fingerprint", catalog.fingerprint());
 
+            if ("site".equals(operation)) {
+                response.put("site", SiteInspector.inspect(event, args, catalog));
+                return response;
+            }
             if ("catalog".equals(operation)) {
                 return catalogPage(response, args, catalog);
             }
@@ -96,12 +107,13 @@ public final class CropHelperService {
     private static boolean isSupported(String operation) {
         return "info".equals(operation) || "catalog".equals(operation)
             || "crop".equals(operation)
-            || "predict".equals(operation);
+            || "predict".equals(operation)
+            || "site".equals(operation);
     }
 
     private static Map<String, Object> info(Map<String, Object> response) {
         response.put("mod_version", CropHelperMod.VERSION);
-        response.put("operations", Arrays.asList("info", "catalog", "crop", "predict"));
+        response.put("operations", Arrays.asList("info", "catalog", "crop", "predict", "site"));
         Catalog catalog = Ic2CatalogReader.get();
         response.put("rules_fingerprint", catalog.fingerprint());
         response.put("catalog_size", catalog.size());

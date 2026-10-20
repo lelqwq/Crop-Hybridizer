@@ -135,7 +135,8 @@ public final class Ic2CatalogReader {
         }
 
         List<String> ids = new ArrayList<String>(
-            Arrays.asList("IC2", "OpenComputers", "cropspp", "Crops++", "gregtech", CropHelperMod.MODID));
+            Arrays
+                .asList("IC2", "OpenComputers", "cropspp", "Crops++", "gregtech", "gregtech_nh", CropHelperMod.MODID));
         Collections.sort(ids);
 
         StringBuilder builder = new StringBuilder();

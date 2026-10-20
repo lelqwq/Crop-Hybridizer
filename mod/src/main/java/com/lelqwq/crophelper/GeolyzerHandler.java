@@ -7,9 +7,11 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.lelqwq.crophelper.site.SiteInspector;
 import com.lelqwq.crophelper.util.OptionMap;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import li.cil.oc.api.event.GeolyzerEvent;
 
 /**
@@ -19,6 +21,11 @@ import li.cil.oc.api.event.GeolyzerEvent;
 public final class GeolyzerHandler {
 
     private static final Logger LOG = LogManager.getLogger(CropHelperMod.MODID);
+
+    @SubscribeEvent
+    public void onServerTick(TickEvent.ServerTickEvent event) {
+        if (event.phase == TickEvent.Phase.START) SiteInspector.onServerTick();
+    }
 
     @SubscribeEvent
     public void onAnalyze(GeolyzerEvent.Analyze event) {
@@ -48,7 +55,7 @@ public final class GeolyzerHandler {
 
         Map<String, Object> reply;
         try {
-            reply = CropHelperService.handle(operation, options);
+            reply = CropHelperService.handle(operation, options, event);
         } catch (Throwable t) {
             // 查询接口不允许把服务端线程打崩；最坏情况返回 query_failed。
             LOG.error("crop_helper handler failed for operation " + operation, t);

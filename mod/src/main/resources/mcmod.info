@@ -3,8 +3,8 @@
   "modList": [{
     "modid": "crop_helper",
     "name": "Crop Helper",
-    "description": "OpenComputers geolyzer.analyze bridge exposing IC2 crop catalog, properties and crossing weights.",
-    "version": "0.1.0",
+    "description": "OpenComputers geolyzer.analyze bridge exposing IC2 crops, crossing weights and current-site checks.",
+    "version": "0.3.0",
     "mcversion": "1.7.10",
     "url": "https://github.com/lelqwq/Crop-Hybridizer",
     "updateUrl": "",

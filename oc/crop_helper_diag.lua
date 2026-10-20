@@ -5,6 +5,7 @@
 --   crop_helper_diag.lua crop <owner:name>
 --   crop_helper_diag.lua predict <owner:name> <owner:name> [limit] [offset]
 --   crop_helper_diag.lua scan
+--   crop_helper_diag.lua site [亲本A 亲本B [候选品种]]
 --
 -- 依赖服务器端 crop_helper 模组；没有模组时 info/catalog 会给出明确提示。
 -- 机器人或电脑的 geolyzer 必须朝向要扫描的作物。
@@ -261,6 +262,15 @@ local function command_scan(geolyzer)
     print(dump(scan))
 end
 
+local function command_site(geolyzer, first, second, candidate)
+    local filesystem = require("filesystem")
+    local path = filesystem.path(os.getenv("_") or "oc/crop_helper_diag.lua")
+    local site = assert(loadfile(filesystem.concat(path, "lib/crop_site.lua")))()
+    local ok, report = pcall(site.query, geolyzer, sides.front, first, second, candidate)
+    if not ok then print("工位检查失败: " .. tostring(report)); return end
+    site.show(report, print)
+end
+
 local function usage()
     print("用法:")
     print("  crop_helper_diag.lua info")
@@ -268,6 +278,7 @@ local function usage()
     print("  crop_helper_diag.lua crop <owner:name>")
     print("  crop_helper_diag.lua predict <owner:name> <owner:name> [limit] [offset]")
     print("  crop_helper_diag.lua scan")
+    print("  crop_helper_diag.lua site")
 end
 
 local function main(args)
@@ -288,6 +299,8 @@ local function main(args)
         command_predict(geolyzer, args[2], args[3], args[4], args[5])
     elseif command == "scan" then
         command_scan(geolyzer)
+    elseif command == "site" then
+        command_site(geolyzer, args[2], args[3], args[4])
     else
         usage()
     end

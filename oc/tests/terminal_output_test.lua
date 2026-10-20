@@ -81,11 +81,11 @@ assert(output:find("标签: Blue,Food,Mushroom", 1, true))
 local fingerprint = string.rep("0123456789abcdef", 4)
 run({
     ok = true,
-    mod_version = "0.1.0",
+    mod_version = "0.3.0",
     protocol = 1,
     rules_fingerprint = fingerprint,
     catalog_size = 160,
-    operations = { "info", "catalog", "crop", "predict" },
+    operations = { "info", "catalog", "crop", "predict", "site" },
 }, "info")
 assert(lines[4]:sub(3) .. lines[5]:sub(3) == fingerprint, "规则指纹不能丢失字符")
 
