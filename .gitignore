@@ -39,3 +39,19 @@ luac.out
 *.x86_64
 *.hex
 
+# GTNH mod build output
+mod/.gradle/
+mod/build/
+mod/bin/
+mod/run/
+mod/out/
+mod/logs/
+mod/crash-reports/
+mod/config/
+mod/saves/
+mod/eclipse/
+mod/.settings/
+mod/.classpath
+mod/.project
+mod/*.iml
+

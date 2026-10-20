@@ -1,0 +1,8 @@
+dependencies {
+    // 编译期依赖；运行时由 GTNH 服务器提供。
+    compileOnlyApi("net.industrial-craft:industrialcraft-2:2.2.828-experimental:api") { transitive = false }
+    compileOnlyApi("com.github.GTNewHorizons:OpenComputers:1.11.20-GTNH:dev") { transitive = false }
+
+    // 纯逻辑单测（规则、参数解析、指纹），不加载 Minecraft/IC2 类。
+    testImplementation("junit:junit:4.13.2")
+}
